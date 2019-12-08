@@ -1,0 +1,14 @@
+DirectoryIndex index.php
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+Header append X-FRAME-OPTIONS "SAMEORIGIN"
+
+<Files "trackingIDS.ini">
+Order Allow,Deny
+Deny from all
+</Files>
