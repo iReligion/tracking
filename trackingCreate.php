@@ -17,7 +17,7 @@ if(isset($_POST['id'])) {
 	$message = "Hello! This is an automatic email informing you that this email was used as the client of a project provided by https://landon.pw. You can view the status of your project using the online Tracking System. Simply visit https://landon.pw/tracking and enter the following ID: '" . $_POST['id'] . "'. If you did not recently purchase any services, you can safely ignore this email.";
 	$headers = 'From: tracking@landon.pw';
 	mail($to, $subject, $message, $headers);
-	header("Location: https://landon.pw/tracking/" . $_POST['id'] . "");
+	header("Location: /tracking/" . $_POST['id'] . "");
 	die();
 }
 ?>
