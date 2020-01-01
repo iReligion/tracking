@@ -3,7 +3,7 @@ if (isset($_POST['id'])) {
 	$string = file_get_contents('trackingIDS.ini');
 	$check = "" . $_POST['id'] . " =";
 	if (strpos($string, $check) !== false) {
-		header("Location: https://landon.pw/tracking/" . $_POST['id'] . "");
+		header("Location: /tracking/" . $_POST['id'] . "");
 		die();
     } else {
     	echo "<center><p>That tracking ID is invalid.</p></center>";
