@@ -5,19 +5,19 @@ if(isset($_POST['id'])) {
 	$textDocument = fopen("" . $_POST['id'] . ".txt", "w");
 	$phpDocument = fopen("" . $_POST['id'] . ".php", "w");
 	$trackingIDS = fopen('trackingIDS.ini', 'a');
-	fwrite($phpDocument, '<?php  if(isset($_GET["edit"])){if(isset($_POST["update"])){file_put_contents("' . $_POST['id'] . '.txt", "" . date("m/d/Y") . " at " . date("h:i:s A") . "\n" . $_POST["update"].PHP_EOL.PHP_EOL , FILE_APPEND | LOCK_EX); header("Location: https://landon.pw/tracking/' . $_POST['id'] . '"); die();}else {echo("<center><p>Post an update...</p></center>");}}else {$content=file_get_contents("' . $_POST['id'] . '.txt");echo(nl2br(htmlentities($content)));die();}?> <!DOCTYPE html><html><head><title>Post an update...</title><style>textarea{width:100%; height:75%;}</style><body><form action="#" id="form" method="post"><textarea rows="4" cols="50" form="form" name="update" id="update"></textarea> <center><input type="submit" value="Post Update"></center></form></body>');
+	fwrite($phpDocument, '<?php  if(isset($_GET["edit"])){if(isset($_POST["update"])){file_put_contents("' . $_POST['id'] . '.txt", "" . date("m/d/Y") . " at " . date("h:i:s A") . "\n" . strip_tags($_POST["update"]).PHP_EOL.PHP_EOL , FILE_APPEND | LOCK_EX); header("Location: https://projects.landon.pw/tracking/' . $_POST['id'] . '"); die();}else {echo("<center><p>Post an update...</p></center>");}}else {$content=file_get_contents("' . $_POST['id'] . '.txt");echo(nl2br(htmlentities($content)));die();}?> <!DOCTYPE html><html><head><title>Post an update...</title><style>textarea{width:100%; height:75%;}</style><body><form action="#" id="form" method="post"><textarea rows="4" cols="50" form="form" name="update" id="update"></textarea> <center><input type="submit" value="Post Update"></center></form></body>');
 	fwrite($textDocument, "" . date("m/d/Y") . " at " . date("h:i:s A") . ":\nTracking ID created. Thanks for purchasing! Email sent to " . $email ."\n\n");
 	fwrite($trackingIDS, $idList);
 	fclose($textDocument);
 	fclose($phpDocument);
 	fclose($trackingIDS);
-	
+
 	$to      = $email;
 	$subject = "Tracking ID Created - " . $_POST['id'] . "";
-	$message = "Hello! This is an automatic email informing you that this email was used as the client of a project provided by https://landon.pw. You can view the status of your project using the online Tracking System. Simply visit https://landon.pw/tracking and enter the following ID: '" . $_POST['id'] . "'. If you did not recently purchase any services, you can safely ignore this email.";
+	$message = "Hello! This is an automatic email informing you that this email was used as the client of a project provided by https://projects.landon.pw/tracking. You can view the status of your project using the online Tracking System. Simply visit https://projects.landon.pw/tracking and enter the following ID: '" . $_POST['id'] . "'. If you did not recently purchase any services, you can safely ignore this email.";
 	$headers = 'From: tracking@landon.pw';
 	mail($to, $subject, $message, $headers);
-	header("Location: /tracking/" . $_POST['id'] . "");
+	header("Location: https://projects.landon.pw/tracking/" . $_POST['id'] . "");
 	die();
 }
 ?>
@@ -46,7 +46,7 @@ body {
   padding: 10px;
   width: 400px;
   font-size: 25px;
-} 
+}
 </style>
 
 </head>
@@ -73,7 +73,7 @@ function generateId() {
 
 function changeBackground() {
 	var background2 = readCookie('background');
-	document.body.style.backgroundImage = "url('" + background2 + "')"; 
+	document.body.style.backgroundImage = "url('" + background2 + "')";
 }
 
 function readCookie(name) {
@@ -89,3 +89,4 @@ function readCookie(name) {
 </script>
 </center>
 </body>
+</html>
