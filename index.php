@@ -3,7 +3,7 @@ if (isset($_POST['id'])) {
 	$string = file_get_contents('trackingIDS.ini');
 	$check = "" . $_POST['id'] . " =";
 	if (strpos($string, $check) !== false) {
-		header("Location: /tracking/" . $_POST['id'] . "");
+		header("Location: https://projects.landon.pw/tracking/" . $_POST['id'] . "");
 		die();
     } else {
     	echo "<center><p>That tracking ID is invalid.</p></center>";
@@ -62,7 +62,7 @@ function setBackground() {
 
 function changeBackground() {
 	var background2 = readCookie('background');
-	document.body.style.backgroundImage = "url('" + background2 + "')"; 
+	document.body.style.backgroundImage = "url('" + background2 + "')";
 }
 
 function readCookie(name) {
