@@ -9,4 +9,8 @@ Very simple, and minimal CSS involved. This is just the core PHP project. This i
 ## Take a look here:
 https://projects.landon.pw/tracking
 
-Tracking ID to enter: 9216-1445-5777-8277
+Tracking ID to enter: 3128-7704-4669-8381
+
+## Usage:
+https://projects.landon.pw/tracking/trackingCreate - Create a tracking ID for an order.
+https://projects.landon.pw/tracking/<TRACKING-ID>?edit - Provide updates to an order.
